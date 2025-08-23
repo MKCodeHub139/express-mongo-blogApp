@@ -1,41 +1,67 @@
-<div class="navbar bg-[#B9375D] text-base-100 shadow-sm">
-  <div class="navbar-start">
-    <div class="dropdown">
-      <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
+<div class="navbar bg-[#B9375D]  shadow-sm">
+  <div class="flex-1">
+    <h3
+      class="w-[140px] text-2xl font-bold cursor-pointer bg-base-100 hover:bg-gray-200 text-black px-3 py-2 rounded text-center"
+    >
+      Dev<span class="text-[#B9375D]">T</span>ALK
+    </h3>
+  </div>
+  <div class="flex gap-2">
+    <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto" />
+    <% if(locals.user){ %>
+    <div class="dropdown dropdown-end">
+      <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+        <div class="w-10 rounded-full">
+          <img
+            alt="Tailwind CSS Navbar component"
+            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+        </div>
       </div>
       <ul
         tabindex="0"
         class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-        <li><a>Item 1</a></li>
         <li>
-          <a>Parent</a>
-          <ul class="p-2">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
-          </ul>
+          <a class="">
+            <b><%= user.name %></b>
+          </a>
         </li>
-        <li><a>Item 3</a></li>
+        <li>
+          <a class="justify-between">
+            Profile
+          </a>
+        </li>
+        <li><a href="/blog/add-blog">Add Blog</a></li>
+        <li><a>Settings</a></li>
+        <li class="bg-red-400 text-base-100"><a href="/user/logout">Logout</a></li>
       </ul>
     </div>
-    <h3 class="text-2xl font-bold cursor-pointer bg-base-100 hover:bg-gray-200 text-black px-3 py-2 rounded">Dev<span class="text-[#B9375D]">T</span>ALK</h3>
-  </div>
-  <div class="navbar-center hidden lg:flex">
-    <ul class="menu menu-horizontal px-1">
-      <li><a>Item 1</a></li>
-      <li>
-        <details>
-          <summary>Parent</summary>
-          <ul class="p-2">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
-          </ul>
-        </details>
-      </li>
-      <li><a>Item 3</a></li>
-    </ul>
-  </div>
-  <div class="navbar-end">
-    <a class="btn">Button</a>
+    <% } else{ %>
+   
+      <div class="btns">
+        <a href="/user/signin" class="btn btn-ghost border-2 border-base-100 text-base-100 hover:text-black">SignIN</a>
+        <a href="/user/signup" class="btn btn-ghost border-2 border-base-100 text-base-100 hover:text-black">SignUP</a>
+      </div>
+      <% } %>
   </div>
 </div>
+
+<% if(locals.error){ %>
+<div class="container mx-auto">
+  <div role="alert" class="alert alert-warning">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-6 w-6 shrink-0 stroke-current"
+      fill="none"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+      />
+    </svg>
+    <span>Warning: Invalid email address!</span>
+  </div>
+</div>
+<% } %>
