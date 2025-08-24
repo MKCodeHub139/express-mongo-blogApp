@@ -1,8 +1,42 @@
 <%- include('./partials/head/head') %>
-<body>
-    <div class="main bg-[#EEEEEE] min-h-screen">
-    <%- include('./partials/nav/nav') %>
-    <%= JSON.stringify(user) %>
-    </div>
-</body>
-</html>
+
+    <body>
+        <%- include('./partials/nav/nav') %>
+            <div class="main bg-[#EEEEEE]">
+
+            
+            <div class="min-h-screen container mx-auto py-5">
+                <h2 class="text-4xl font-bold">ALL blogs</h2>
+                <div class="cards mt-5 flex flex-wrap gap-3 overflow-hidden">
+                    <% if(locals.blogs){%>
+                        <% locals.blogs.forEach(blog=> { %>
+                            <div class="card bg-base-100 w-96 shadow-sm h-[350px] overflow-x-auto">
+                                <figure class="h-[60%]">
+                                    <img src=<%=blog.coverImageUrl %>
+                                    alt="blog" class="w-[100%] object-cover"/>
+                                </figure>
+                                <div class="card-body h-[45%]">
+                                    <h2 class="card-title">
+                                        <%= blog.title %>
+                                    </h2>
+                                    <p>
+                                        <%= blog.body %>
+                                    </p>
+                                    <div class="card-actions justify-end">
+                                        <a href="/blog/<%= blog._id %>" class="btn btn-primary">Let's see</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <% }); } %>
+
+
+
+                           
+
+                </div>
+            </div>
+            </div>
+    </body>
+
+    </html>

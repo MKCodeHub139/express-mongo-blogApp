@@ -1,10 +1,10 @@
 <%- include('./partials/head/head') %>
 <body>
     <%- include('./partials/nav/nav') %>
-    <div class="blog-section m-5">
+    <div class="blog-section container mx-auto py-5 bg-[#EEEEEE]">
         <h2 class="text-4xl font-semi-bold"><span class="font-bold text-[#B9375D]">ADD</span> new blog</h2>
-    </div>
-    <form action="/blog" method="post"class="flex flex-col mx-5 w-1/3 gap-3" enctype="multipart/form-data">
+  
+        <form action="/blog" method="post"class="flex flex-col m-5 w-1/3 gap-3" enctype="multipart/form-data">
         <div class="title flex flex-col">
         <label for="">Title</label>
         <input type="text" name="title" id="" placeholder="enter Title" class="px-2 py-2 rounded border-[#B9375D]">
@@ -18,6 +18,7 @@
             <input type="file" name="coverImage" id="" class="border-[#B9375D] px-2 py-2 cursor-pointer rounded">
         </div>
         <button class="btn btn-ghost w-1/2 bg-[#B9375D] text-[17px] text-base-100 " type="submit">ADD</button>
-    </form>
+        </form>
+    </div>
 </body>
 </html>

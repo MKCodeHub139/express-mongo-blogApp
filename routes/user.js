@@ -3,10 +3,16 @@ import User from "../models/user.js";
 const router = Router();
 
 router.get("/signin", (req, res) => {
-  return res.render("signin");
+  return res.render("signin",{
+            user:req.user,
+
+  });
 });
 router.get("/signup", (req, res) => {
-  return res.render("signup");
+  return res.render("signup",{
+            user:req.user,
+
+  });
 });
 router.post("/signin", async (req, res) => {
   const { email, password } = req.body;

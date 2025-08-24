@@ -1,0 +1,48 @@
+<%- include('./partials/head/head') %>
+<body>
+    <%- include('./partials/nav/nav') %>
+    <div class="main">
+
+   
+    <div class="container mx-auto">
+        <h2 class="text-2xl font-semi-bold my-5"><%= blog.title %></h2>
+        <div class="cover-img w-[70vw] h-[70vh]">
+
+            <img src="/<%=blog.coverImageUrl %> " alt="" class="my-5 w-[100%] h-[100%] object-cover">
+        </div>
+        <div class="created-by flex items-center gap-3 mt-5">
+            <div class="img w-[40px]">
+                 <img src="<%= blog.createdBy.profileImageUrl %>" class="w-[100]" alt="">
+            </div>
+           <b><p><%= blog.createdBy.fullName %></p></b>
+        </div>
+        <p class="mt-5"><%= blog.body %></p>
+    </div>
+    <div class="commennts container mx-auto">
+        <h2 class="text-xl m-5">comments (<%= comments.length  %>)</h2>
+    <% if(locals.user){ %>
+        <form action="/blog/comment/<%= blog._id %>" method="post" class="m-5 w-[50vw] flex gap-2">
+
+            <input type="text" name="comment" id="" placeholder="enter your comment" class="w-[80%] px-2 py-2 rounded">
+            <button type="submit" class="w-[20%] bg-[#B9375D] text-base-100 px-5 rounded">Comment</button>
+
+        </form>
+        <% } %>
+        <div class="all-comments container mx-auto">
+            <% comments.forEach((comment)=>{ %>
+                <div class="flex gap-5 items-center">
+                    <div class="img ">
+                        <img src="<%=comment.createdBy.profileImageUrl  %>" alt="" width="50">
+                    </div>
+                    <div>
+
+                        <b><%= comment.createdBy.fullName  %></b><hr>
+                        <p class="mt-2"><%= comment.content %></p>
+                    </div>
+                 </div>
+          <%  }) %>
+        </div>
+    </div>
+</div>
+</body>
+</html>

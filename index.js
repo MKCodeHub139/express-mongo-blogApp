@@ -2,6 +2,7 @@ import express from 'express'
 import path from 'path'
 import userRoute from './routes/user.js';
 import blogRouter from './routes/blog.js'
+import Blog from './models/blog.js'
 import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
 import { checkAuthInCookie } from './middlewares/auth.js';
@@ -16,10 +17,13 @@ app.set('views',path.resolve('./views'))
 app.use(express.urlencoded({extended:false}))
 app.use(cookieParser())
 app.use(checkAuthInCookie('token'))
+app.use(express.static(path.resolve('./public')))
 
-app.get('/',(req,res)=>{
+app.get('/',async(req,res)=>{
+    const blogs = await Blog.find({})
     return res.render('home',{
         user:req.user,
+        blogs:blogs
     })
 })
 app.use('/user',userRoute)
