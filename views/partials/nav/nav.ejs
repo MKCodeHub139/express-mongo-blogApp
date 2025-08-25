@@ -14,8 +14,9 @@
         <div class="w-10 rounded-full">
           <img
             alt="Tailwind CSS Navbar component"
-            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+            src="<%=user.profileImageUrl  %>" />
         </div>
+        
       </div>
       <ul
         tabindex="0"
@@ -30,6 +31,7 @@
             Profile
           </a>
         </li>
+        <li><a href="/blog/my-blogs">My blogs</a></li>
         <li><a href="/blog/add-blog">Add Blog</a></li>
         <li><a>Settings</a></li>
         <li class="bg-red-400 text-base-100"><a href="/user/logout">Logout</a></li>

@@ -1,11 +1,18 @@
 <%- include('./partials/head/head') %>
 <body>
     <%- include('./partials/nav/nav') %>
-    <div class="main">
-
-   
+    <div class="main min-h-screen py-5 bg-[#EEEEEE]">
     <div class="container mx-auto">
-        <h2 class="text-2xl font-semi-bold my-5"><%= blog.title %></h2>
+        <div class="title flex items-center justify-between">
+            <h2 class="text-2xl font-semi-bold my-5"><%= blog.title %></h2>
+           <% if(user && blog.createdBy._id == user._id){ %>
+    <div class="actions flex gap-4 text-base-100">
+        <a class="bg-blue-600 px-5 py-2 btn btn-ghost" href="/blog/edit/<%= blog._id %>">edit</a>
+        <a class="bg-red-400 px-5 py-2 btn btn-ghost" href="/blog/delete/<%= blog._id %>">delete</a>
+    </div>
+<% } %>
+
+        </div>
         <div class="cover-img w-[70vw] h-[70vh]">
 
             <img src="/<%=blog.coverImageUrl %> " alt="" class="my-5 w-[100%] h-[100%] object-cover">
@@ -30,7 +37,7 @@
         <% } %>
         <div class="all-comments container mx-auto">
             <% comments.forEach((comment)=>{ %>
-                <div class="flex gap-5 items-center">
+                <div class="flex gap-5 items-center mb-5">
                     <div class="img ">
                         <img src="<%=comment.createdBy.profileImageUrl  %>" alt="" width="50">
                     </div>

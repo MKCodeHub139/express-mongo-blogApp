@@ -1,0 +1,44 @@
+<%- include('./partials/head/head') %>
+<body>
+    <%- include('./partials/nav/nav') %>
+    <div class="main py-5 bg-[#EEEEEE] min-h-screen">
+
+        <div class="blog-section container mx-auto">
+            <h2 class="text-4xl font-bold">MY blogs</h2>
+            <% if(locals.user){ %>
+                  <div class="cards mt-5 flex flex-wrap gap-3 overflow-hidden">
+                        <% if(locals.myBlogs && locals.myBlogs.length >0){%>
+                            <% locals.myBlogs.forEach(blog=> { %>
+                                <div class="card bg-base-100 w-96 shadow-sm h-[350px] overflow-x-auto">
+                                    <figure class="h-[60%]">
+                                        <img src="/<%=blog.coverImageUrl %>"
+                                        alt="blog" class="w-[100%] object-cover"/>
+                                    </figure>
+                                    <div class="card-body h-[45%]">
+                                        <h2 class="card-title">
+                                            <%= blog.title %>
+                                        </h2>
+                                        <p>
+                                            <%= blog.body %>
+                                        </p>
+                                        <div class="card-actions justify-end">
+                                            <a href="/blog/<%= blog._id %>" class="btn btn-primary">Let's see</a>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                   <% }); %>
+                               <% } else{%>
+                                        <div class="text-center w-full mt-5 text-xl">No blog posted yet!</div>
+                                        <% } %>
+    
+    
+    
+                               
+    
+                    </div>
+                <% } %>
+        </div>
+    </div>
+</body>
+</html>

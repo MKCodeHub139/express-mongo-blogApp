@@ -1,42 +1,42 @@
 <%- include('./partials/head/head') %>
-
     <body>
         <%- include('./partials/nav/nav') %>
-            <div class="main bg-[#EEEEEE]">
-
-            
-            <div class="min-h-screen container mx-auto py-5">
-                <h2 class="text-4xl font-bold">ALL blogs</h2>
-                <div class="cards mt-5 flex flex-wrap gap-3 overflow-hidden">
-                    <% if(locals.blogs){%>
-                        <% locals.blogs.forEach(blog=> { %>
-                            <div class="card bg-base-100 w-96 shadow-sm h-[350px] overflow-x-auto">
-                                <figure class="h-[60%]">
-                                    <img src=<%=blog.coverImageUrl %>
-                                    alt="blog" class="w-[100%] object-cover"/>
-                                </figure>
-                                <div class="card-body h-[45%]">
-                                    <h2 class="card-title">
-                                        <%= blog.title %>
-                                    </h2>
-                                    <p>
-                                        <%= blog.body %>
-                                    </p>
-                                    <div class="card-actions justify-end">
-                                        <a href="/blog/<%= blog._id %>" class="btn btn-primary">Let's see</a>
+            <div class="main bg-[#EEEEEE] min-h-screen py-5">
+                <div class="container mx-auto">
+                    <h2 class="text-4xl font-bold">ALL blogs</h2>
+                    <div class="cards mt-5 flex flex-wrap gap-3 overflow-hidden">
+                        <% if(locals.blogs && locals.blogs.length > 0 ){ %>
+                            <% locals.blogs.forEach(blog=> { %>
+                                <div class="card bg-base-100 min-w-76 w-96 max-w-[100vw] shadow-sm h-[350px] overflow-x-auto grow-[25vw]">
+                                    <figure class="h-[60%]">
+                                        <img src=<%=blog.coverImageUrl %>
+                                        alt="blog" class="w-[100%] object-cover"/>
+                                    </figure>
+                                    <div class="card-body h-[45%] p-5">
+                                        <h2 class="card-title">
+                                            <%= blog.title %>
+                                        </h2>
+                                        <p class="text-ellipsis md:text-clip ...">
+                                            <%= blog.body %>
+                                        </p>
+                                        <div class="card-actions justify-end">
+                                            <a href="/blog/<%= blog._id %>" class="btn btn-primary">Let's see</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <% }); } %>
+                                <% }); %>
+                                    <% } else{%>
+                                        <div class="text-center w-full mt-5 text-xl">No blog posted yet!</div>
+                                        <% } %>
 
 
 
-                           
 
+
+                    </div>
                 </div>
             </div>
-            </div>
     </body>
-
+<%- include("./partials/footer/footer") %>
     </html>
