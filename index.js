@@ -10,12 +10,10 @@ import { checkAuthInCookie } from './middlewares/auth.js';
 
 const app = express()
 const port = process.env.PORT || 8000
-mongoose.connect(process.env.MONGO_URL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
-.then(() => console.log('MongoDB connected successfully'))
-.catch(err => console.error('MongoDB connection error:', err));
+mongoose.connect(process.env.MONGO_URL)
+  .then(() => console.log('MongoDB connected successfully'))
+  .catch(err => console.error('MongoDB connection error:', err));
+
 app.set("view engine", "ejs")
 app.set('views', path.resolve('./views'))
 app.use(express.urlencoded({ extended: false }))
