@@ -1,21 +1,21 @@
 <%- include('./partials/head/head') %>
 <body>
     <%- include('./partials/nav/nav') %>
-    <div class="main min-h-screen py-5 bg-[#EEEEEE]">
+    <div class="main min-h-screen pb-5 pt-[5rem] bg-[#EEEEEE]">
     <div class="container mx-auto">
-        <div class="title flex items-center justify-between">
+        <div class="title md:flex items-center justify-between">
             <h2 class="text-2xl font-semi-bold my-5"><%= blog.title %></h2>
            <% if(user && blog.createdBy._id == user._id){ %>
-    <div class="actions flex gap-4 text-base-100">
+    <div class="actions flex gap-4 text-base-100 float-right mb-3 md:mb-0">
         <a class="bg-blue-600 px-5 py-2 btn btn-ghost" href="/blog/edit/<%= blog._id %>">edit</a>
         <a class="bg-red-400 px-5 py-2 btn btn-ghost" href="/blog/delete/<%= blog._id %>">delete</a>
     </div>
 <% } %>
 
         </div>
-        <div class="cover-img w-[70vw] h-[70vh]">
+        <div class="cover-img md:w-[70vw] w-full md:h-[70vh]">
 
-            <img src="/<%=blog.coverImageUrl %> " alt="" class="my-5 w-[100%] h-[100%] object-cover">
+            <img src="/<%=blog.coverImageUrl %> " alt="" class="my-5 w-[100%] h-[100%] object-cover ">
         </div>
         <div class="created-by flex items-center gap-3 mt-5">
             <div class="img w-[40px]">
@@ -28,10 +28,10 @@
     <div class="commennts container mx-auto">
         <h2 class="text-xl m-5">comments (<%= comments.length  %>)</h2>
     <% if(locals.user){ %>
-        <form action="/blog/comment/<%= blog._id %>" method="post" class="m-5 w-[50vw] flex gap-2">
+        <form action="/blog/comment/<%= blog._id %>" method="post" class="m-5 md:w-[50vw] w-[100vw] flex gap-2">
 
-            <input type="text" name="comment" id="" placeholder="enter your comment" class="w-[80%] px-2 py-2 rounded">
-            <button type="submit" class="w-[20%] bg-[#B9375D] text-base-100 px-5 rounded">Comment</button>
+            <input type="text" name="comment" id="" placeholder="enter your comment" class="md:w-[80%] min-w-[50vw] w-[60vw] px-2 py-2 rounded">
+            <button type="submit" class="w-[25vw] max-w-[30vw] bg-[#B9375D] text-base-100 px-2 md:px-5 rounded">Comment</button>
 
         </form>
         <% } %>
@@ -51,5 +51,6 @@
         </div>
     </div>
 </div>
+<%- include('./partials/footer/footer')  %>
 </body>
 </html>

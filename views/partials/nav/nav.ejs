@@ -1,4 +1,4 @@
-<div class="navbar bg-[#B9375D]  shadow-sm">
+<div class="navbar bg-[#B9375D]  shadow-sm fixed z-3">
   <div class="flex-1">
     <h3
       class="w-[140px] text-2xl font-bold cursor-pointer bg-base-100 hover:bg-gray-200 text-black px-3 py-2 rounded text-center"
@@ -7,7 +7,6 @@
     </h3>
   </div>
   <div class="flex gap-2">
-    <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto" />
     <% if(locals.user){ %>
     <div class="dropdown dropdown-end">
       <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
