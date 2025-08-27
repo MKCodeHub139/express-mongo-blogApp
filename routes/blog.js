@@ -48,9 +48,7 @@ router.post('/edit/:editId',upload.single('edit-coverImage'),async(req,res)=>{
     if(req.body.body) newBlog.body=req.body.body
     if(req.file) newBlog.coverImageUrl=`uploads/${req.file.filename}`
     const editBlog =await Blog.findByIdAndUpdate({_id:req.params.editId},{$set:newBlog},{new:true})
-    console.log(editBlog)
-            
-    return res.redirect('/blog/edit/68aafc59d5fae3b3a534662c')
+    return res.redirect(`/blog/${editBlog._id}`)
 })
 router.get('/delete/:deleteId',async(req,res)=>{
     const deleteData = await Blog.findById(req.params.deleteId)
